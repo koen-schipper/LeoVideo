@@ -74,7 +74,7 @@ const SingleMovie = (props: {
     return (
         <TableCell component='th' scope='row' style={{ position: 'relative' }}>
             <IconButton
-                style={{ position: 'absolute ', top: 0, right: 0, zIndex: 10 }}
+                style={{ position: 'absolute', top: 0, right: 0, zIndex: 10 }}
                 onClick={handleFavoriteClick}
             >
                 {isFavorite ? <Star style={{ color: '#fd5c3c' }} /> : <StarOutline />}
