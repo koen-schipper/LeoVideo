@@ -63,6 +63,7 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
                     <Grid item xs={12} md={8}>
                         <TextField
                             id='search-field'
+                            data-testid='search-field'
                             label='Search'
                             variant='outlined'
                             size='small'
@@ -78,7 +79,7 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
                             <Select
                                 labelId='category-select-label'
                                 id='category-select'
-                                value={category.toString()}
+                                data-testid='category-select'
                                 label='Category'
                                 size='small'
                                 onChange={handleCategoryChange}
@@ -114,7 +115,13 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={1}>
-                        <Button variant='outlined' color='success' size='medium' type='submit'>
+                        <Button
+                            variant='outlined'
+                            color='success'
+                            size='medium'
+                            type='submit'
+                            data-testid='search-button'
+                        >
                             Search
                         </Button>
                     </Grid>
