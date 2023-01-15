@@ -14,7 +14,7 @@ import { getCategories } from '../data/api';
 
 const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean) => void }) => {
     const [term, setTerm] = useState<string>('');
-    const [category, setCategory] = useState<string>('');
+    const [category, setCategory] = useState<string>('28');
     const [adult, setAdult] = useState<boolean>(false);
     const [categories, setCategories] = useState<any>();
 
@@ -80,7 +80,7 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
                                 labelId='category-select-label'
                                 id='category-select'
                                 data-testid='category-select'
-                                value='action'
+                                value={category.toString()}
                                 label='Category'
                                 size='small'
                                 onChange={handleCategoryChange}
