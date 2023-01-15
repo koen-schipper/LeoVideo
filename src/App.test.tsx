@@ -39,19 +39,19 @@ describe('result list', () => {
         render(<App />);
         const user = userEvent.setup();
         await userEvent.type(screen.getByTestId('search-field'), 'Matrix');
-        const categoryWrapper = screen.getByTestId('category-select');
-        await user.click(categoryWrapper);
-        const categorySelect = categoryWrapper.childNodes[0];
-        console.log(categorySelect);
-        // await user.click(screen.getByTestId('category-select'));
-        // await user.click(screen.getByText('Action'));
+        // const categoryWrapper = screen.getByTestId('category-select');
+        // await user.click(categoryWrapper);
+        // const categorySelect = categoryWrapper.childNodes[0];
+        // console.log(categorySelect);
+        // // await user.click(screen.getByTestId('category-select'));
+        // // await user.click(screen.getByText('Action'));
         await user.click(screen.getByTestId('search-button'));
     });
 
     test('renders results table after search', () => {
-        // const oneMatrixMovie = screen.getByText('The Matrix Resurrections');
-        // expect(oneMatrixMovie).toBeInTheDocument();
-        // const twoMatrixMovie = screen.getByText('The Matrix Reloaded');
-        // expect(twoMatrixMovie).toBeInTheDocument();
+        const oneMatrixMovie = screen.getByText('The Matrix Resurrections');
+        expect(oneMatrixMovie).toBeInTheDocument();
+        const twoMatrixMovie = screen.getByText('The Matrix Reloaded');
+        expect(twoMatrixMovie).toBeInTheDocument();
     });
 });

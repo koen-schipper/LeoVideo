@@ -80,6 +80,7 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
                                 labelId='category-select-label'
                                 id='category-select'
                                 data-testid='category-select'
+                                value='action'
                                 label='Category'
                                 size='small'
                                 onChange={handleCategoryChange}
