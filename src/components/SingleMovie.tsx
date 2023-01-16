@@ -18,8 +18,25 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
+interface movie {
+    poster_path: string | null;
+    adult: boolean;
+    overview: string;
+    release_date: string;
+    genre_ids: number[];
+    id: number;
+    original_title: string;
+    original_language: string;
+    title: string;
+    backdrop_path: string | null;
+    popularity: number;
+    vote_count: number;
+    video: boolean;
+    vote_average: number;
+}
+
 const SingleMovie = (props: {
-    movie: any;
+    movie: movie;
     onFavoriteClick: any;
     favorites: any;
     onWatchListClick: any;
@@ -62,14 +79,14 @@ const SingleMovie = (props: {
     };
 
     let isFavorite = false;
-    if (favorites.includes(movie.title)) {
+    if (favorites.includes(title)) {
         isFavorite = true;
     } else {
         isFavorite = false;
     }
 
     let onWatchList = false;
-    if (watchList.includes(movie.title)) {
+    if (watchList.includes(title)) {
         onWatchList = true;
     } else {
         onWatchList = false;

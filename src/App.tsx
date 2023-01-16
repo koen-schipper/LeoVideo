@@ -10,12 +10,16 @@ import { AxiosResponse } from 'axios';
 import EmptyList from './components/EmptyList';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
+interface movie {
+    title: string;
+}
+
 function App() {
     const [movies, setMovies] = useState<AxiosResponse | null>(null);
     const [favorites, setFavorites] = useLocalStorage<any[]>('favorites', []);
     const [watchList, setWatchList] = useLocalStorage<any[]>('watchlist', []);
 
-    const handleFavoriteClick = (movie: any) => {
+    const handleFavoriteClick = (movie: movie) => {
         let newFavoritesArray: any[];
         if (favorites.includes(movie.title)) {
             const tempArray = [...favorites];
@@ -29,7 +33,7 @@ function App() {
         setFavorites(newFavoritesArray);
     };
 
-    const handleWatchListClick = (movie: any) => {
+    const handleWatchListClick = (movie: movie) => {
         let newWatchListArray: any[];
         if (watchList.includes(movie.title)) {
             const tempArray = [...watchList];
@@ -43,7 +47,7 @@ function App() {
         setWatchList(newWatchListArray);
     };
 
-    const handleWatchListNavClick = (movie: any) => {
+    const handleWatchListNavClick = (movie: movie) => {
         let newWatchListArray: any[];
         if (watchList.includes(movie)) {
             const tempArray = [...watchList];
