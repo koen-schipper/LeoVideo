@@ -33,20 +33,3 @@ describe('app renders', () => {
         expect(topRatedMoviesTitle).toBeInTheDocument();
     });
 });
-
-// describe('result list', () => {
-//     test('renders results table after search', async () => {
-//         render(<App />);
-//         const user = userEvent.setup();
-
-//         const inputField = await screen.findByRole('textbox', { name: /search/i });
-//         await userEvent.type(inputField, 'Matrix');
-
-//         await user.click(screen.getByTestId('search-button'));
-
-//         const oneMatrixMovie = screen.getByText('The Matrix Resurrections');
-//         expect(oneMatrixMovie).toBeInTheDocument();
-//         const twoMatrixMovie = screen.getByText('The Matrix Reloaded');
-//         expect(twoMatrixMovie).toBeInTheDocument();
-//     });
-// });

@@ -20,6 +20,7 @@ function ResultList(props: {
 }) {
     const favorites = props.favorites;
     const watchList = props.watchList;
+    const testid = 'rowtestid';
 
     const handleFavoriteClick = (movie: any) => {
         props.onFavoriteClick(movie);
@@ -50,6 +51,7 @@ function ResultList(props: {
                         {props.movies.map((movie: any, counter: number) => (
                             <TableRow
                                 key={counter}
+                                data-testid={testid + counter}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <SingleResult
