@@ -11,22 +11,39 @@ import {
 } from '@mui/material';
 import SingleResult from './SingleResult';
 
+interface movie {
+    poster_path: string | null;
+    adult: boolean;
+    overview: string;
+    release_date: string;
+    genre_ids: number[];
+    id: number;
+    original_title: string;
+    original_language: string;
+    title: string;
+    backdrop_path: string | null;
+    popularity: number;
+    vote_count: number;
+    video: boolean;
+    vote_average: number;
+}
+
 function ResultList(props: {
     movies: any;
-    onFavoriteClick: any;
-    favorites: any;
-    onWatchListClick: any;
-    watchList: any;
+    onFavoriteClick: (arg0: any) => void;
+    favorites: any[];
+    onWatchListClick: (arg0: any) => void;
+    watchList: any[];
 }) {
     const favorites = props.favorites;
     const watchList = props.watchList;
     const testid = 'rowtestid';
 
-    const handleFavoriteClick = (movie: any) => {
+    const handleFavoriteClick = (movie: movie) => {
         props.onFavoriteClick(movie);
     };
 
-    const handleWatchListClick = (movie: any) => {
+    const handleWatchListClick = (movie: movie) => {
         props.onWatchListClick(movie);
     };
 
@@ -48,7 +65,7 @@ function ResultList(props: {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.movies.map((movie: any, counter: number) => (
+                        {props.movies.map((movie: movie, counter: number) => (
                             <TableRow
                                 key={counter}
                                 data-testid={testid + counter}

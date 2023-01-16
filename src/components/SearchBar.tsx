@@ -1,4 +1,12 @@
-import { useEffect, useState } from 'react';
+import {
+    JSXElementConstructor,
+    ReactElement,
+    ReactFragment,
+    ReactPortal,
+    SetStateAction,
+    useEffect,
+    useState
+} from 'react';
 import {
     Box,
     Button,
@@ -11,6 +19,19 @@ import {
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { getCategories } from '../data/api';
+
+interface singleCategorie {
+    id: string | number | readonly string[] | undefined;
+    name:
+        | string
+        | number
+        | boolean
+        | ReactElement<any, string | JSXElementConstructor<any>>
+        | ReactFragment
+        | ReactPortal
+        | null
+        | undefined;
+}
 
 const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean) => void }) => {
     const [term, setTerm] = useState<string>('');
@@ -27,11 +48,11 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
         setAdult(boolValue);
     };
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: { target: { value: SetStateAction<string> } }) => {
         setTerm(event.target.value);
     };
 
-    const handleFormSubmit = (event: any) => {
+    const handleFormSubmit = (event: { preventDefault: () => void }) => {
         event.preventDefault();
         props.onSubmit(term, Number(category), adult);
     };
@@ -86,11 +107,13 @@ const SearchBar = (props: { onSubmit: (arg0: string, arg1: number, arg2: boolean
                                 onChange={handleCategoryChange}
                             >
                                 {categoriesLoaded ? (
-                                    categories.map((singleCategorie: any, counter: number) => (
-                                        <MenuItem key={counter} value={singleCategorie.id}>
-                                            {singleCategorie.name}
-                                        </MenuItem>
-                                    ))
+                                    categories.map(
+                                        (singleCategorie: singleCategorie, counter: number) => (
+                                            <MenuItem key={counter} value={singleCategorie.id}>
+                                                {singleCategorie.name}
+                                            </MenuItem>
+                                        )
+                                    )
                                 ) : (
                                     <MenuItem value={0}>Categories Loading..</MenuItem>
                                 )}

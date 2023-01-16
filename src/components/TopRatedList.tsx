@@ -13,21 +13,38 @@ import SingleMovie from './SingleMovie';
 import { getTopRatedMovies } from '../data/api';
 import { useEffect, useState } from 'react';
 
+interface movie {
+    poster_path: string | null;
+    adult: boolean;
+    overview: string;
+    release_date: string;
+    genre_ids: number[];
+    id: number;
+    original_title: string;
+    original_language: string;
+    title: string;
+    backdrop_path: string | null;
+    popularity: number;
+    vote_count: number;
+    video: boolean;
+    vote_average: number;
+}
+
 function TopRatedList(props: {
-    onFavoriteClick: any;
-    favorites: any;
-    onWatchListClick: any;
-    watchList: any;
+    onFavoriteClick: (arg0: movie) => void;
+    favorites: any[];
+    onWatchListClick: (arg0: movie) => void;
+    watchList: any[];
 }) {
     const [topRated, getTopRated] = useState([]);
     const favorites = props.favorites;
     const watchList = props.watchList;
 
-    const handleFavoriteClick = (movie: any) => {
+    const handleFavoriteClick = (movie: movie) => {
         props.onFavoriteClick(movie);
     };
 
-    const handleWatchListClick = (movie: any) => {
+    const handleWatchListClick = (movie: movie) => {
         props.onWatchListClick(movie);
     };
 

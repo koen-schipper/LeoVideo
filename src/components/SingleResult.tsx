@@ -19,12 +19,29 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
+interface movie {
+    poster_path: string | null;
+    adult: boolean;
+    overview: string;
+    release_date: string;
+    genre_ids: number[];
+    id: number;
+    original_title: string;
+    original_language: string;
+    title: string;
+    backdrop_path: string | null;
+    popularity: number;
+    vote_count: number;
+    video: boolean;
+    vote_average: number;
+}
+
 const SingleResult = (props: {
-    movie: any;
-    onFavoriteClick: any;
-    favorites: any;
-    onWatchListClick: any;
-    watchList: any;
+    movie: movie;
+    onFavoriteClick: (arg0: movie) => void;
+    favorites: any[];
+    onWatchListClick: (arg0: movie) => void;
+    watchList: any[];
 }) => {
     const movie = props.movie;
     const posterPath: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;

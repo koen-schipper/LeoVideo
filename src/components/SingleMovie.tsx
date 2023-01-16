@@ -37,10 +37,10 @@ interface movie {
 
 const SingleMovie = (props: {
     movie: movie;
-    onFavoriteClick: any;
-    favorites: any;
-    onWatchListClick: any;
-    watchList: any;
+    onFavoriteClick: (arg0: movie) => void;
+    favorites: any[];
+    onWatchListClick: (arg0: movie) => void;
+    watchList: any[];
 }) => {
     const movie = props.movie;
     const posterPath: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;

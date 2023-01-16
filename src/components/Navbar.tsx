@@ -12,10 +12,14 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-function Navbar(props: { favorites: any; onWatchListClick: any; watchList: any }) {
+function Navbar(props: {
+    favorites: any[];
+    onWatchListClick: (arg0: any) => void;
+    watchList: any[];
+}) {
     const [favoriteAnchor, setFavoriteAnchor] = useState<null | HTMLElement>(null);
     const [watchListAnchor, setWatchListAnchor] = useState<null | HTMLElement>(null);
-    const favorites: [] = props.favorites;
+    const favorites = props.favorites;
     const watchList = props.watchList;
     let hasFavorites = false;
     let hasWatchList = false;
@@ -74,7 +78,7 @@ function Navbar(props: { favorites: any; onWatchListClick: any; watchList: any }
                         open={Boolean(favoriteAnchor)}
                         onClose={handleFavoriteClose}
                     >
-                        {favorites.map((favorite: any, counter: number) => (
+                        {favorites.map((favorite, counter: number) => (
                             <ListItem key={counter} onClick={handleFavoriteClose}>
                                 <ListItemText primary={favorite} />
                             </ListItem>
