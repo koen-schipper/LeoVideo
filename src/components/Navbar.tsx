@@ -52,7 +52,7 @@ function Navbar(props: {
         <AppBar position='static'>
             <Toolbar>
                 <Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
-                    LeoVideo
+                    Movie Database
                 </Typography>
                 <Button
                     color='inherit'
